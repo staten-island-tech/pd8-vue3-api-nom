@@ -1,6 +1,5 @@
 <template>
-<div>th rthh
-</div>
+<div></div>
 </template> 
 <script setup>
 </script>
