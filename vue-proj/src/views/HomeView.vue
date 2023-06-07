@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <!-- <div class="home">
       <h1>This is a home page</h1>
       <PokemonCard
       v-for="(monster, index) in pokemon"
@@ -7,7 +7,7 @@
       :id="index + 1"
       :pokemon="monster"
       />
-    </div>
+    </div> -->
   </template>
   
   <style>
