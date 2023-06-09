@@ -14,6 +14,10 @@ const props = defineProps({
     pokemon: Object,
     id: Number
 })
+const pkmnPath = computed(() => {
+    return `/PokemonData/${props.pokemon.name}`
+}
+)
 </script>
 
 <style scoped>
