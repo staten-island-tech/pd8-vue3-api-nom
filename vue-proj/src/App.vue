@@ -1,12 +1,15 @@
-<template>
-  <BarChart />
-</template>
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
 
-<script>
-import BarChart from 'path/to/component/BarChart'
-
-export default {
-  name: 'App',
-  components: { BarChart }
-}
 </script>
+
+<template>
+  <RouterView/>
+</template>
+<style scoped>
+header {
+  line-height: 1.5;
+  max-height: 100vh;
+
+}
+</style>
