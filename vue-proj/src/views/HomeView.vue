@@ -1,16 +1,37 @@
-<template>
-    <div class="home">
-      <h1>This is a home page</h1>
+
+  <template>
+    <div class="container">
+        <PokemonCard v-for="(monster, index) in pokemon"
+        :key="monster.name"
+        :id="index + 1"
+        :pokemon="monster"
+        />
     </div>
-  </template>
-  
-  <style>
-  @media (min-width: 1024px) {
-    .home {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
+    </template>
+    
+    
+    <script setup>
+    import {ref, onMounted} from 'vue'
+    import PokemonCard from '../components/PokemonCard.vue'
+    const pokemon = ref('')
+    async function getPokemon() {
+        let res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
+    let data = await res.json()
+    pokemon.value = data.results
     }
-  }
-  </style>
-  
+    onMounted(() => {
+        getPokemon()
+    })
+    </script>
+    <style scoped>
+    .container {
+        width: 80vw;
+        margin: 30px auto;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    </style>
+    
