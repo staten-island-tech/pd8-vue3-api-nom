@@ -1,5 +1,4 @@
-
-  <template>
+<template>
     <div class="container">
         <PokemonCard v-for="(monster, index) in pokemon"
         :key="monster.name"
@@ -7,17 +6,31 @@
         :pokemon="monster"
         />
     </div>
+    <barChart v-if="pokemon" :data="pokemon"></barChart>
+    <pieChart v-if="pokemon" :data="pokemon"></pieChart>
+
     </template>
     
     
     <script setup>
     import {ref, onMounted} from 'vue'
+    import barChart from '../components/barChart.vue';
+    import pieChart from '../components/pieChart.vue';
+
     import PokemonCard from '../components/PokemonCard.vue'
-    const pokemon = ref('')
+    const pokemon = ref(false)
     async function getPokemon() {
-        let res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
+        let res = await fetch('https://data.cityofnewyork.us/resource/5ucz-vwe8.json')
     let data = await res.json()
-    pokemon.value = data.results
+    let newData = [
+        ["Manhatan",data.filter(sh=>sh.boro=="MANHATTAN").length],
+        ["Staten Island",data.filter(sh=>sh.boro=="STATEN ISLAND").length],
+        ["Bronx",data.filter(sh=>sh.boro=="BRONX").length],
+        ["Brooklyn",data.filter(sh=>sh.boro=="BROOKLYN").length],
+        ["Queens",data.filter(sh=>sh.boro=="QUEENS").length],
+    ]
+    console.log(newData)
+    pokemon.value = newData
     }
     onMounted(() => {
         getPokemon()
@@ -34,4 +47,3 @@
         justify-content: space-around;
     }
     </style>
-    
