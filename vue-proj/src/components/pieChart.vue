@@ -12,11 +12,15 @@
   data: {
     labels: boros,
     datasets: [{
-      label: '# of Votes',
+      label: '# of Shootings',
       data: count,
       backgroundColor: [
       'rgb(255, 99, 132)',
       'rgb(54, 162, 235)',
+      'rgb(99, 130, 56)',
+      'rgb(10, 70, 99)',
+      'rgb(80, 50, 99)',
+      'rgb(2, 105, 1)'
     ],
     }]
   },

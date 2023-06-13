@@ -12,7 +12,7 @@
   data: {
     labels: boros,
     datasets: [{
-      label: '# of Votes',
+      label: '# of Shootings',
       data: count,
       borderWidth: 1
     }]
